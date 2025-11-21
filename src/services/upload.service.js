@@ -1,9 +1,6 @@
 import { validateFileType } from "../utils/fileValidator.js";  
 
 export function processUploadedFile(file, baseUrl) {
-    if (!file){
-        throw new Error('No file uploaded');
-    }
 
     // Validar tipo
     if (!validateFileType(file)) {
