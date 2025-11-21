@@ -54,10 +54,6 @@ temp/
 # Archivos de PM2
 .pm2/
 
-# Uploads (opcional, según tu caso)
-uploads/
-public/uploads/
-
 # Certificados SSL (si los tienes localmente)
 *.pem
 *.key
