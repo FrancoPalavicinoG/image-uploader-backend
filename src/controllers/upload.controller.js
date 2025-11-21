@@ -1,4 +1,6 @@
 import { processUploadedFile } from "../services/upload.service.js";
+import path from "path";
+import { fileURLToPath } from "url";
 
 export async function uploadImage(req, res) {
     try {
@@ -18,4 +20,22 @@ export async function uploadImage(req, res) {
             message: error.message,
         });
     }
+}
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+export async function downloadImage(req, res) {
+    const { filename } = req.params;
+
+    const filePath = path.join(__dirname, "../public/uploads", filename);
+
+    return res.download(filePath, (err) => {
+        if (err) {
+            return res.status(404).json({
+                success: false,
+                message: "File not found"
+            });
+        }
+    });
 }
