@@ -8,7 +8,12 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+    origin: [
+      "http://localhost:5173",
+      "https://fascinating-arithmetic-f23bd5.netlify.app"
+    ]
+  }));
 app.use(morgan('dev'));
 app.use(express.json());
 
